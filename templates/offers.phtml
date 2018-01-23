@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>E-Vouchers</title>
+    <?php require __DIR__ . '/bootstrap.phtml'; ?>
+  </head>
+
+  <body class="container-fluid">
+    <div class="row">
+      <?php require __DIR__ . '/header.phtml'; ?>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-5">
+        <h2 style='margin-top: 0px'>Listing Discounts</h2>
+      </div>
+      <div class="col-sm-1">
+
+        <a class="btn btn-warning btn-sm pull-right" href="/offer/new">+</a>
+      </div>
+    </div>
+      <div class="row">
+        <div class="col-sm-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Discount</th>
+              <th scope="col">Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($offers as $line): ?>
+            <tr>
+              <td><?= $line['name'] ?></td>
+              <td><?= $line['discount'] ?>%</td>
+              <td>
+                <a class="btn btn-primary btn-xs" href="/offer/edit/<?= $line['id'] ?>">Edit</a>
+                <a class="btn btn-danger btn-xs" href="/offer/confirm/<?= $line['id'] ?>">Delete</a>
+              </td>
+            </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+        </div>
+
+        <div class="col-sm-6" style="margin-top: 1%">
+
+          <?php if (isset($message)) { ?>
+
+            <div style="background-color: #bafbff; border-style: solid; border-color: #bad5ff; text-align: center;">
+              <?= $message ?>
+            </div> <br/>
+
+         <?php  } ?>
+
+          <?php
+
+            if(isset($delete_offer))
+              require __DIR__ . '/offer_delete.phtml';
+
+            if(isset($offer))
+              require __DIR__ . '/offer_edit.phtml';
+
+          ?>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<form action="<?= $action ?>" method="post">
+  <div class="row">
+    <div class="col-sm-12" style="text-align: center; border-bottom-style: solid; border-color: #ddd">
+      <strong>Editing Voucher:</strong>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4" style="background-color: #f9f9f9">
+      <strong>Code:</strong>
+    </div>
+    <div class="col-sm-8">
+      <input
+        type="text"
+        name="code"
+        value="<?= $voucher['code'] ?>"
+        readonly>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4" style="background-color: #f9f9f9">
+      <strong>Offer:</strong>
+    </div>
+    <div class="col-sm-8">
+      <select name="offer_id" required>
+        <option value="">None</option>
+        <?php foreach ($offers as $choice): ?>
+          <option
+          <?php if($choice['id'] == $voucher['offer_id']) {
+            echo ' selected="selected" ';
+          }
+          ?>
+          value="<?= $choice['id'] ?>">
+            <?= $choice['name'] ?>
+          </option>
+        <?php endforeach; ?>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4" style="background-color: #f9f9f9">
+      <strong>Recipient:</strong>
+    </div>
+    <div class="col-sm-8">
+      <select name="recipient_id" required>
+        <option value="">None</option>
+        <?php foreach ($recipients as $choice): ?>
+          <option
+          <?php if($choice['id'] == $voucher['recipient_id']) {
+              echo ' selected="selected" ';
+            }?>
+           value="<?= $choice['id'] ?>"><?= $choice['name'] ?></option>
+        <?php endforeach; ?>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4" style="background-color: #f9f9f9">
+      <strong>Expiration Date:</strong>
+    </div>
+    <div class="col-sm-8">
+      <input
+        type="date"
+        name="expiration_date"
+        value="<?= $voucher['expiration_date'] ?>"
+        required>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12" style="text-align: center; border-top-style: solid; border-color: #ddd">
+
+      <button class="btn btn-success btn-sm" type="submit" href="/vouchers">Save</button>
+      <a class="btn btn-danger btn-sm" href="/vouchers">Cancel</a>
+
+    </div>
+  </div>
+</form>

@@ -1,0 +1,43 @@
+<form action="<?= $action ?>" method="post">
+<div class="row">
+  <div class="col-sm-12" style="text-align: center; border-bottom-style: solid; border-color: #ddd">
+    <strong>Editing Recipient:</strong>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4" style="background-color: #f9f9f9">
+    <strong>Name:</strong>
+  </div>
+  <div class="col-sm-8">
+     <input
+      type="text"
+      name="name"
+      value="<?= $recipient['name'] ?>"
+      required
+      size="50">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4" style="background-color: #f9f9f9">
+    <strong>E-Mail:</strong>
+  </div>
+  <div class="col-sm-8">
+    <input
+      type="email"
+      name="email"
+      value="<?= $recipient['email'] ?>"
+      required>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12" style="text-align: center; border-top-style: solid; border-color: #ddd">
+
+    <button class="btn btn-success btn-sm" type="submit" href="/recipients">Save</button>
+    <a class="btn btn-danger btn-sm" href="/recipients">Cancel</a>
+
+  </div>
+</div>
+</form>

@@ -1,0 +1,44 @@
+<form action="<?= $action ?>" method="post">
+<div class="row">
+  <div class="col-sm-12" style="text-align: center; border-bottom-style: solid; border-color: #ddd">
+    <strong>Editing Offer:</strong>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4" style="background-color: #f9f9f9">
+    <strong>Name:</strong>
+  </div>
+  <div class="col-sm-8">
+     <input
+      type="text"
+      name="name"
+      value="<?= $offer['name'] ?>"
+      required
+      size="50">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4" style="background-color: #f9f9f9">
+    <strong>Discount:</strong>
+  </div>
+  <div class="col-sm-8">
+    <input
+      type="number"
+      name="discount"
+      value="<?= $offer['discount'] ?>"
+      min="0"
+      max="100"> %
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12" style="text-align: center; border-top-style: solid; border-color: #ddd">
+
+    <button class="btn btn-success btn-sm" type="submit" href="/offers">Save</button>
+    <a class="btn btn-danger btn-sm" href="/offers">Cancel</a>
+
+  </div>
+</div>
+</form>

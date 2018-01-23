@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-12" style="text-align: center; border-bottom-style: solid; border-color: #ddd">
+    <strong>Deleting Recipient:</strong>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4" style="background-color: #f9f9f9">
+    <strong>Name:</strong>
+  </div>
+  <div class="col-sm-8">
+    <?= $delete_recipient['name'] ?>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4" style="background-color: #f9f9f9">
+    <strong>E-Mail:</strong>
+  </div>
+  <div class="col-sm-8">
+    <?= $delete_recipient['email'] ?>%
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12" style="text-align: center; border-top-style: solid; border-color: #ddd">
+    Are you <strong>sure</strong> you want to delete this recipient?
+    <a class="btn btn-danger btn-sm" href="/recipient/delete/<?= $delete_recipient['id'] ?>">Yes</a>
+    <a class="btn btn-success btn-sm" href="/recipients">No</a>
+  </div>
+</div>

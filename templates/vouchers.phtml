@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>E-Vouchers</title>
+    <?php require __DIR__ . '/bootstrap.phtml'; ?>
+  </head>
+
+  <body class="container-fluid">
+    <div class="row">
+      <?php require __DIR__ . '/header.phtml'; ?>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-5">
+        <h2 style='margin-top: 0px'>Listing Vouchers</h2>
+      </div>
+      <div class="col-sm-1">
+
+        <a class="btn btn-warning btn-sm pull-right" href="/voucher/new">+</a>
+      </div>
+    </div>
+      <div class="row">
+        <div class="col-sm-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Code</th>
+              <th scope="col">Used on:</th>
+              <th scope="col">Offer</th>
+              <th scope="col">Discount</th>
+              <th scope="col">Recipient</th>
+              <th scope="col">Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($vouchers as $line): ?>
+
+            <tr>
+              <?php if(isset($line['used_on_date'])) { ?>
+                <td><del><?= $line['code'] ?></del></td>
+              <?php } else  {  ?>
+                <td><?= $line['code'] ?></td>
+              <?php } ?>
+              <td><?= $line['used_on_date'] ?></td>
+              <td><?= $line['offer'] ?></td>
+              <td><?= $line['discount'] ?>%</td>
+              <td><?= $line['recipient'] ?></td>
+              <td>
+                <a
+                href="/voucher/edit/<?= $line['id'] ?>"
+                class="btn btn-primary btn-xs" >Edit</a>
+
+                <a class="btn btn-danger btn-xs"
+                href="/voucher/confirm/<?= $line['id'] ?>">Delete</a>
+
+                <a class="btn btn-warning btn-xs"
+                <?php if(isset($line['used_on_date'])) echo "disabled"; ?> href="/voucher/use/<?= $line['code'] ?>/<?= $line['email'] ?>">Use</a>
+
+              </td>
+            </tr>
+
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+        </div>
+
+        <div class="col-sm-6" style="margin-top: 1%">
+
+          <?php if (isset($message)) { ?>
+
+            <div style="background-color: #bafbff; border-style: solid; border-color: #bad5ff; text-align: center;">
+              <?= $message ?>
+            </div> <br/>
+
+         <?php  } ?>
+
+         <?php if (isset($error)) { ?>
+
+           <div style="background-color: #ffaaaa; border-style: solid; border-color: #ff9999; text-align: center;">
+             <?= $error ?>
+           </div> <br/>
+
+        <?php  } ?>
+
+          <?php
+
+            if(isset($delete_voucher))
+              require __DIR__ . '/voucher_delete.phtml';
+
+            if(isset($voucher))
+              require __DIR__ . '/voucher_edit.phtml';
+
+          ?>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+  #outro {
+    padding: 0;
+    width: 100%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: #aaa;
+    font-size: 18px;
+    background: yellow;
+  }
+
+  h1 {
+    color: #719e40;
+    font-size: 12px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
